@@ -37,7 +37,7 @@ def object_detection_view(request):
 
             # Load the classes
             classes = []
-            with open('C:\\Users\\Dilith Dinesh\\envdjango\\Data_hub\\yoloModel\\coco.names.txt','r') as f:
+            with open('coco.names.txt','r') as f:
                 classes = [line.strip() for line in f.readlines()]
 
             # Load the image
@@ -115,6 +115,11 @@ def object_detection_view(request):
             # Create a BytesIO object to hold the image data
             output_image_data = io.BytesIO()
 
+            # #compress the image 
+            # compressed_image_data= io.BytesIO()
+            # output_image_pil.save(compressed_image_data,format='JPEG',quality=80)
+            # compressed_image_data.seek(0)
+
             # Save the PIL Image
             output_image_pil.save(output_image_data, format='JPEG')
 
@@ -129,6 +134,8 @@ def object_detection_view(request):
                 
                 }
 
+            #log
+            print(response_data)
             
             
             
